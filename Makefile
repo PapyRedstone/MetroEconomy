@@ -15,7 +15,7 @@ all: $(TARGET) git
 remake: clean all
 
 $(TARGET) : $(OBJ)
-	g++ obj/* $(LDFLAGS) -o $@ 
+	g++ $(OBJ) $(LDFLAGS) -o $@ 
 
 obj/%.o: src/%.cpp $(INCLUDE)
 	g++ -c -Iinclude $(CFLAGS) -o $@ $<
