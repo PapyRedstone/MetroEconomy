@@ -4,6 +4,8 @@
 #include <vector>
 #include <cmath>
 
+#include "Ressource.hpp"
+
 class Tunnel;
 
 class Station: public sf::CircleShape{

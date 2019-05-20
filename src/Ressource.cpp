@@ -1,4 +1,4 @@
-#include "Ressources.hpp"
+#include "Ressource.hpp"
 
 Ressource::Ressource(RessourceType t):type{t}
 {}
