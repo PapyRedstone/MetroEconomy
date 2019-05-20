@@ -10,7 +10,7 @@ INCLUDE = $(wildcard include/*.hpp)
 
 TARGET = Metro.out
 
-all: git $(TARGET)
+all: $(TARGET) git
 
 remake: clean all
 
