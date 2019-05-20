@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <cmath>
+#include <map>
 
 #include "Ressource.hpp"
 
@@ -15,6 +16,7 @@ public:
   void addTunnel(Tunnel& t);
   
 private:
+  //std::vector<>
   std::vector<Tunnel> connectedTunnels;
 };
 
