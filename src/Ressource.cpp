@@ -14,3 +14,11 @@ RessourceType::Type Ressource::getType(){
 void Ressource::addAmount(int n){
   amount += n;
 }
+
+void Ressource::addAmountPerSecond(int a){
+  amountPerSecond += a;
+}
+
+void Ressource::update(){
+  amount += amountPerSecond;
+}
