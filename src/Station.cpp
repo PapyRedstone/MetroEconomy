@@ -5,6 +5,10 @@ Station::Station():sf::CircleShape{30}
   setOutlineColor(sf::Color::Blue);
   setOutlineThickness(5);
   setFillColor(sf::Color::Red);
+
+  for(RessourceType::Type t: RessourceType::All){
+    ressources.push_back(t);
+  }
 }
 
 void Station::addTunnel(Tunnel& t){

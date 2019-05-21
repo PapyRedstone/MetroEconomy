@@ -1,13 +1,13 @@
 #include "Ressource.hpp"
 
-Ressource::Ressource(RessourceType t):type{t}
+Ressource::Ressource(RessourceType::Type t):type{t}
 {}
 
 int Ressource::getAmount(){
   return amount;
 }
 
-RessourceType Ressource::getType(){
+RessourceType::Type Ressource::getType(){
   return type;
 }
 

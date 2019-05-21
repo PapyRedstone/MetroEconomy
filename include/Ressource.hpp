@@ -1,19 +1,25 @@
 #pragma once
 
-enum class RessourceType{
-  Wood,
-  Food
-};
+#include <array>
+
+namespace RessourceType{
+  enum Type{
+    Wood,
+    Food
+  };
+  const std::array<Type, 2> All = {Wood, Food}; 
+}
+
 
 class Ressource{
 public:
-  Ressource(RessourceType t);
+  Ressource(RessourceType::Type t);
 
-  RessourceType getType();
+  RessourceType::Type getType();
   int getAmount();
   void addAmount(int n);
 
 private:
-  RessourceType type;
+  RessourceType::Type type;
   int amount;
 };
