@@ -26,7 +26,7 @@ clean:
 clear:
 	rm obj/*.o *.gch -f
 
-git: $(SRC) $(INCLUDE) $(TARGET)
+git:
 	git pull
 	git add .
 	git commit
