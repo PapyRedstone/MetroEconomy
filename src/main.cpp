@@ -9,6 +9,7 @@
 
 int main(){
   sf::RenderWindow window(sf::VideoMode(800,600), "Metro");
+  window.setVerticalSyncEnabled(true);
   window.setFramerateLimit(60);
 
   ImGui::SFML::Init(window);

@@ -36,5 +36,12 @@ Tunnel::Tunnel(Station& s1, Station& s2):station1{s1},station2{s2}
   setFillColor(sf::Color::Green);
 
   float angle = std::atan((p1.y-p2.y) / (p1.x-p2.x));
-  setRotation(angle*180/std::acos(-1)); //convert radians to degree (acos(-1) == PI)
+  float pi = std::acos(-1);
+  while(angle >= pi){
+    angle -= 2*pi;
+  }
+  while(angle < pi){
+    angle += 2*pi;
+  }
+  setRotation(angle*180/pi); //convert radians to degree (acos(-1) == PI)
 }
