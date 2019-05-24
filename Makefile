@@ -1,5 +1,5 @@
 CFLAGS = -g -Wall -pedantic -O3 -std=c++17
-LDFLAGS = -lsfml-network -lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS = -lsfml-network -lsfml-graphics -lsfml-window -lsfml-system -lGL
 #UNIT = -ftest-coverage -fprofile-arcs
 
 SRC = $(wildcard src/*.cpp)
@@ -10,7 +10,7 @@ INCLUDE = $(wildcard include/*.hpp)
 
 TARGET = Metro.out
 
-all: $(TARGET) git
+all: $(TARGET)
 
 remake: clean all
 
