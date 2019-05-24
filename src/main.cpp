@@ -4,8 +4,9 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
-#include "Station.hpp"
 #include <vector>
+
+#include "Station.hpp"
 
 int main(){
   sf::RenderWindow window(sf::VideoMode(800,600), "Metro");
