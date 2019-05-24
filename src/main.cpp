@@ -1,6 +1,3 @@
-#include "imgui.hpp"
-#include "imgui-SFML.hpp"
-
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
@@ -15,8 +12,12 @@ int main(){
 
   ImGui::SFML::Init(window);
 
-  std::vector<Station> stations(4);
+  std::vector<Station> stations;
   std::vector<Tunnel> tunnels;
+
+  for(unsigned i{0}; i<4; i++){
+    stations.push_back(std::string(1,'A'+i));
+  }
 
   stations[0].setPosition(50,50);
   stations[1].setPosition(400,50);
@@ -47,20 +48,13 @@ int main(){
 
     ImGui::SFML::Update(window, clock.restart());
 
-    ImGui::Begin("window");
-
-    if(ImGui::Button("button")){
-      std::cout << "hello\n";
-    }
-    
-    ImGui::End();
-
     window.clear();
     for(auto &t:tunnels){
       window.draw(t);
     }
     for(auto &s:stations){
       window.draw(s);
+      s.drawUI();
     }
 
     ImGui::SFML::Render(window);

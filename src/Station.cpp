@@ -1,6 +1,6 @@
 #include "Station.hpp"
 
-Station::Station():sf::CircleShape{30}
+Station::Station(std::string n):sf::CircleShape{30}, isUIShow{true}, name{n}
 {
   setOutlineColor(sf::Color::Blue);
   setOutlineThickness(5);
@@ -13,6 +13,20 @@ Station::Station():sf::CircleShape{30}
 
 void Station::addTunnel(Tunnel& t){
   connectedTunnels.push_back(t);
+}
+
+void Station::drawUI(){
+  if(!isUIShow){
+    return;
+  }
+
+  ImGui::Begin(name.data());
+
+  if(ImGui::Button("Button")){
+    std::cout << name << "\n";
+  }
+  
+  ImGui::End();
 }
 
 Tunnel::Tunnel(Station& s1, Station& s2):station1{s1},station2{s2}
