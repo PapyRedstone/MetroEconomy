@@ -1,7 +1,7 @@
 #include "Station.hpp"
 #include "Tunnel.hpp"
 
-Station::Station(std::string n):sf::CircleShape{30}, isUIShow{true}, name{n}
+Station::Station(std::string n):sf::CircleShape{30}, isUIShow{false}, name{n}
 {
   setOutlineColor(sf::Color::Blue);
   setOutlineThickness(5);
@@ -17,17 +17,16 @@ void Station::addTunnel(Tunnel& t){
 }
 
 void Station::drawUI(){
-  if(!isUIShow){
-    return;
+  if(isUIShow){
+    
+    ImGui::Begin(name.data());
+    
+    if(ImGui::Button("Button")){
+      std::cout << name << "\n";
+    }
+    
+    ImGui::End();
   }
-
-  ImGui::Begin(name.data());
-
-  if(ImGui::Button("Button")){
-    std::cout << name << "\n";
-  }
-  
-  ImGui::End();
 }
 
 void Station::switchUIShow(){

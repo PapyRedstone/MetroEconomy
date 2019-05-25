@@ -1,5 +1,5 @@
 CFLAGS = -g -Wall -pedantic -O3 -std=c++17
-LDFLAGS = -lsfml-network -lsfml-graphics -lsfml-window -lsfml-system -lGL
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lGL
 #UNIT = -ftest-coverage -fprofile-arcs
 
 SRC = $(wildcard src/*.cpp)
@@ -15,6 +15,8 @@ all: $(TARGET)
 remake: clean all
 
 $(TARGET) : $(OBJ)
+#	echo $(SRC)
+#	echo $(OBJ)
 	g++ $(OBJ) $(LDFLAGS) -o $@ 
 
 obj/%.o: src/%.cpp $(INCLUDE)

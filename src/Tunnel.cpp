@@ -17,7 +17,7 @@ Tunnel::Tunnel(Station& s1, Station& s2):station1{s1},station2{s2}
   }else{
     p = p2;
   }
-  setPosition(p + sf::Vector2f(3/2*station1.getRadius(), station1.getRadius()/2));
+  setPosition(p + sf::Vector2f(3/2*station1.getRadius(), 3/2*station1.getRadius()));
   setFillColor(sf::Color::Green);
 
   float angle = std::atan((p1.y-p2.y) / (p1.x-p2.x));

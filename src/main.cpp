@@ -41,6 +41,21 @@ int main(){
 	window.close();
 	break;
 
+      case sf::Event::MouseButtonPressed:
+	if(event.mouseButton.button == sf::Mouse::Left){
+	  for(auto& s: stations){
+	    //(x - center_x)^2 + (y - center_y)^2 < radius^2
+	    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+	    sf::Vector2f circlePos = s.getPosition();
+	    circlePos += sf::Vector2f(s.getRadius(), s.getRadius());
+	    if(std::pow(mousePos.x - circlePos.x, 2) +
+	       std::pow(mousePos.y - circlePos.y, 2) < std::pow(s.getRadius(),2)){
+	      //std::cout << "Hi\n";
+	      s.switchUIShow();
+	    }
+	  }
+	}
+
       default:
 	break;
       }
