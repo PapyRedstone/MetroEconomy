@@ -21,7 +21,7 @@ obj/%.o: src/%.cpp $(INCLUDE)
 	g++ -c -Iinclude $(CFLAGS) -o $@ $<
 
 clean:
-	rm obj/*.o *.out *.gch -f
+	rm obj/*.o *.out *.gch *.ini -f
 
 clear:
 	rm obj/*.o *.gch -f

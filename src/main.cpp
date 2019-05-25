@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-#include "Station.hpp"
+#include "Tunnel.hpp"
 
 int main(){
   sf::RenderWindow window(sf::VideoMode(800,600), "Metro");
