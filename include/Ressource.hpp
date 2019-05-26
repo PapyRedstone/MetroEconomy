@@ -7,7 +7,8 @@ namespace RessourceType{
     Wood,
     Food
   };
-  const std::array<Type, 2> All = {Wood, Food}; 
+  const std::array<Type, 2> All = {Wood, Food};
+  const std::array<Type, 2> StringType = {"Wood", "Food"};
 }
 
 class Ressource{
