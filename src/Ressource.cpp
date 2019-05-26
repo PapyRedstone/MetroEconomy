@@ -12,16 +12,6 @@ RessourceType::Type Ressource::getType(){
 }
 
 std::string Ressource::getString(){
-  /*  switch(type){
-  case RessourceType::Wood:
-    return "Wood";
-
-  case RessourceType::Food:
-    return "Food";
-
-  default:
-    return "NoRe";
-    }*/
   return RessourceType::StringType[type];
 }
 

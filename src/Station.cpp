@@ -19,6 +19,10 @@ void Station::addTunnel(Tunnel& t){
 }
 
 void Station::drawUI(){
+  if(!isUIShow){
+    return;
+  }
+
   //Showing UI for a station
   if(!ImGui::Begin(name.data(), nullptr, ImGuiWindowFlags_AlwaysAutoResize)){
     ImGui::End();
@@ -27,6 +31,7 @@ void Station::drawUI(){
 
   for(auto& res: ressources){
     ImGui::LabelText(std::to_string(res.getAmount()).data(), res.getString().data());
+    //ImGui::LabelText(std::to_string(res.getAmount()).data(), "OK");
   }
   
   ImGui::End();
