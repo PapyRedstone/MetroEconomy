@@ -1,17 +1,14 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <iostream>
-#include <vector>
-
 #include "Tunnel.hpp"
 
 int main(){
+  //Setting up window
   sf::RenderWindow window(sf::VideoMode(800,600), "Metro");
   window.setVerticalSyncEnabled(true);
   window.setFramerateLimit(60);
-
   ImGui::SFML::Init(window);
 
+  //Setting up level
+  //TODO : import from lua
   std::vector<Station> stations;
   std::vector<Tunnel> tunnels;
 
@@ -29,25 +26,31 @@ int main(){
   tunnels.push_back(Tunnel(stations[1], stations[2]));
   tunnels.push_back(Tunnel(stations[1], stations[3]));
 
+  //Needed for gui
   sf::Clock clock;
 
   while(window.isOpen()){
+    //Managing event
     sf::Event event;
     while(window.pollEvent(event)){
+      //Manage UI events
       ImGui::SFML::ProcessEvent(event);
       
       switch(event.type){
       case sf::Event::Closed:
 	window.close();
 	break;
-
+	
       case sf::Event::MouseButtonPressed:
 	if(event.mouseButton.button == sf::Mouse::Left){
+
+	  //Switch UI show if click on a station
 	  for(auto& s: stations){
-	    //(x - center_x)^2 + (y - center_y)^2 < radius^2
 	    sf::Vector2i mousePos = sf::Mouse::getPosition(window);
 	    sf::Vector2f circlePos = s.getPosition();
 	    circlePos += sf::Vector2f(s.getRadius(), s.getRadius());
+
+	    //(x - center_x)^2 + (y - center_y)^2 < radius^2
 	    if(std::pow(mousePos.x - circlePos.x, 2) +
 	       std::pow(mousePos.y - circlePos.y, 2) < std::pow(s.getRadius(),2)){
 	      s.switchUIShow();
@@ -60,6 +63,7 @@ int main(){
       }
     }
 
+    //Drawing
     ImGui::SFML::Update(window, clock.restart());
 
     window.clear();

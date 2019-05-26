@@ -12,7 +12,7 @@ RessourceType::Type Ressource::getType(){
 }
 
 std::string Ressource::getString(){
-  switch(type){
+  /*  switch(type){
   case RessourceType::Wood:
     return "Wood";
 
@@ -21,7 +21,8 @@ std::string Ressource::getString(){
 
   default:
     return "NoRe";
-  }
+    }*/
+  return RessourceType::StringType[type];
 }
 
 void Ressource::addAmount(int n){
