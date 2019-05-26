@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <string>
 
 namespace RessourceType{
   enum Type{
@@ -15,6 +16,7 @@ public:
   Ressource(RessourceType::Type t);
 
   RessourceType::Type getType();
+  std::string getString();
   int getAmount();
   void addAmount(int n);
   void addAmountPerSecond(int a);

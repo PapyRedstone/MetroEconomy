@@ -23,13 +23,13 @@ obj/%.o: src/%.cpp $(INCLUDE)
 	g++ -c -Iinclude $(CFLAGS) -o $@ $<
 
 clean:
-	rm obj/*.o *.out *.gch *.ini -f
+	rm obj/*.o *.out *.gch -f
 
 clear:
 	rm obj/*.o *.gch -f
 
 git:
-	git pull
 	git add .
 	git commit
+	git pull
 	git push

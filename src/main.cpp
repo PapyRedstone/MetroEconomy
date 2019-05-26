@@ -19,10 +19,10 @@ int main(){
     stations.push_back(std::string(1,'A'+i));
   }
 
-  stations[0].setPosition(50,50);
-  stations[1].setPosition(400,50);
-  stations[2].setPosition(50,400);
-  stations[3].setPosition(400,400);
+  stations[0].setPosition( 50,  50);
+  stations[1].setPosition(400,  50);
+  stations[2].setPosition( 50, 400);
+  stations[3].setPosition(400, 400);
 
   tunnels.push_back(Tunnel(stations[0], stations[1]));
   tunnels.push_back(Tunnel(stations[2], stations[0]));
@@ -50,7 +50,6 @@ int main(){
 	    circlePos += sf::Vector2f(s.getRadius(), s.getRadius());
 	    if(std::pow(mousePos.x - circlePos.x, 2) +
 	       std::pow(mousePos.y - circlePos.y, 2) < std::pow(s.getRadius(),2)){
-	      //std::cout << "Hi\n";
 	      s.switchUIShow();
 	    }
 	  }

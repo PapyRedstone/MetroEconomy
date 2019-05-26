@@ -1,6 +1,6 @@
 #include "Ressource.hpp"
 
-Ressource::Ressource(RessourceType::Type t):type{t}
+Ressource::Ressource(RessourceType::Type t):type{t}, amount{0}
 {}
 
 int Ressource::getAmount(){
@@ -9,6 +9,19 @@ int Ressource::getAmount(){
 
 RessourceType::Type Ressource::getType(){
   return type;
+}
+
+std::string Ressource::getString(){
+  switch(type){
+  case RessourceType::Wood:
+    return "Wood";
+
+  case RessourceType::Food:
+    return "Food";
+
+  default:
+    return "NoRe";
+  }
 }
 
 void Ressource::addAmount(int n){

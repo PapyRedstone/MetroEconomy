@@ -17,16 +17,20 @@ void Station::addTunnel(Tunnel& t){
 }
 
 void Station::drawUI(){
-  if(isUIShow){
-    
-    ImGui::Begin(name.data());
-    
-    if(ImGui::Button("Button")){
-      std::cout << name << "\n";
-    }
-    
-    ImGui::End();
+  if(!isUIShow){
+    return;
   }
+    
+  if(!ImGui::Begin(name.data(), nullptr, ImGuiWindowFlags_AlwaysAutoResize)){
+    ImGui::End();
+    return;
+  }
+
+  for(auto& res: ressources){
+    ImGui::LabelText(std::to_string(res.getAmount()).data(), res.getString().data());
+  }
+  
+  ImGui::End();
 }
 
 void Station::switchUIShow(){
