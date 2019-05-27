@@ -1,4 +1,5 @@
 #include "Tunnel.hpp"
+#include <sol.hpp>
 
 int main(){
   //Setting up window
@@ -8,23 +9,33 @@ int main(){
   ImGui::SFML::Init(window);
 
   //Setting up level
-  //TODO : import from lua
   std::vector<Station> stations;
   std::vector<Tunnel> tunnels;
 
-  for(unsigned i{0}; i<4; i++){
-    stations.push_back(std::string(1,'A'+i));
+  sol::state luaState;
+  luaState.open_libraries(sol::lib::base);
+  luaState.script_file("ressources/script/setup.lua");
+
+  sol::table stationsTable = luaState["stations"];
+  if(!stationsTable.valid()){
+    std::cerr << "Error loading sations in lua\n";
+    return -1;
   }
 
-  stations[0].setPosition( 50,  50);
-  stations[1].setPosition(400,  50);
-  stations[2].setPosition( 50, 400);
-  stations[3].setPosition(400, 400);
+  stationsTable.for_each([&](const sol::object& key, const sol::table& value){
+      stations.push_back(std::string(value["name"]));
+      stations.back().setPosition(value["position"][1], value["position"][2]);
+    });
 
-  tunnels.push_back(Tunnel(stations[0], stations[1]));
-  tunnels.push_back(Tunnel(stations[2], stations[0]));
-  tunnels.push_back(Tunnel(stations[1], stations[2]));
-  tunnels.push_back(Tunnel(stations[1], stations[3]));
+  sol::table tunnelsTable = luaState["tunnels"];
+  if(!stationsTable.valid()){
+    std::cerr << "Error loading tunnels in lua\n";
+    return -1;
+  }
+
+  tunnelsTable.for_each([&](const sol::object& key, const sol::table& value){
+      tunnels.push_back(Tunnel(stations[value["from"]], stations[value["to"]]));
+    });
 
   //Needed for gui
   sf::Clock clock;

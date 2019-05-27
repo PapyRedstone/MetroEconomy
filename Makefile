@@ -1,5 +1,5 @@
 CFLAGS = -g -Wall -pedantic -O3 -std=c++17
-LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lGL
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lGL -llua -ldl
 #UNIT = -ftest-coverage -fprofile-arcs
 
 SRC = $(wildcard src/*.cpp)
