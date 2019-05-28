@@ -171,6 +171,54 @@ stations = {
       name = "Cote des neiges",
       position = {240, 460}
    },
+   { -- id 43
+      name = "Beaudry",
+      position = {550, 330}
+   },
+   { -- id 44
+      name = "Papineau",
+      position = {580, 300}
+   },
+   { -- id 45
+      name = "Frontenac",
+      position = {610, 270}
+   },
+   { -- id 46
+      name = "Prefontaine",
+      position = {640, 300}
+   },
+   { -- id 47
+      name = "Joliette",
+      position = {670, 270}
+   },
+   { -- id 48
+      name = "Pie-ix",
+      position = {700, 240}
+   },
+   { -- id 49
+      name = "Viau",
+      position = {730, 210}
+   },
+   { -- id 50
+      name = "Assomption",
+      position = {700, 180}
+   },
+   { -- id 51
+      name = "Cadillac",
+      position = {730, 150}
+   },
+   { -- id 52
+      name = "Langelier",
+      position = {760, 120}
+   },
+   { -- id 53
+      name = "Radisson",
+      position = {790, 90}
+   },
+   { -- id 54
+      name = "Honore-Beaugrand",
+      position = {820, 60}
+   },
    
 }
 
@@ -347,5 +395,53 @@ tunnels = {
       from = 42,
       to = 24,
    },
-         
+   {
+      from = 13,
+      to = 43,
+   },
+   {
+      from = 43,
+      to = 44,
+   },
+   {
+      from = 44,
+      to = 45,
+   },
+   {
+      from = 45,
+      to = 46,
+   },
+   {
+      from = 46,
+      to = 47,
+   },
+   {
+      from = 47,
+      to = 48,
+   },
+   {
+      from = 48,
+      to = 49,
+   },
+   {
+      from = 49,
+      to = 50,
+   },
+   {
+      from = 50,
+      to = 51,
+   },
+   {
+      from = 51,
+      to = 52,
+   },
+   {
+      from = 52,
+      to = 53,
+   },
+   {
+      from = 53,
+      to = 54,
+   },
+   
 }

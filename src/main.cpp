@@ -32,7 +32,11 @@ int main(){
     return -1;
   }
 
+  auto sizeOfStation = stations.size();
   tunnelsTable.for_each([&](const sol::object& key, const sol::table& value){
+      if(value["from"].cast<int>() < sizeOfStation || value["to"].cast<int>() < sizeOfStation){
+	std::cout << "a\n";
+      }
       tunnels.push_back(Tunnel(stations[value["from"]], stations[value["to"]]));
     });
 
