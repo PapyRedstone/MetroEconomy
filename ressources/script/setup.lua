@@ -131,6 +131,47 @@ stations = {
       name = "Longueil-Universite-de-Sherbrooke",
       position = {630, 380}
    },
+   { -- id 33
+      name = "Saint Michel",
+      position = {430, 90}
+   },
+   { -- id 34
+      name = "D'Iberville",
+      position = {400, 120}
+   },
+   { -- id 35 
+      name = "Fabre",
+      position = {370, 150}
+   },
+   { -- id 36
+      name = "De Castelnau",
+      position = {325, 210}
+   },
+   { -- id 37
+      name = "Parc",
+      position = {300, 240}
+   },
+   { -- id 38
+      name = "Acadie",
+      position = {300, 290}
+   },
+   { -- id 39
+      name = "Outremont",
+      position = {300, 340}
+   },
+   { -- id 40
+      name = "Edouard-Montpettit",
+      position = {300, 400}
+   },
+   { -- id 41
+      name = "Universite de Montreal",
+      position = {270, 430}
+   },
+   { -- id 42
+      name = "Cote des neiges",
+      position = {240, 460}
+   },
+   
 }
 
 tunnels = {
@@ -261,5 +302,50 @@ tunnels = {
    {
       from = 31,
       to = 32
-   }
+   },
+   {
+      from = 33,
+      to = 34
+   },
+   {
+      from = 34,
+      to = 35
+   },
+   {
+      from = 35,
+      to = 7
+   },
+   {
+      from = 7,
+      to = 36
+   },
+   {
+      from = 36,
+      to = 37,
+   },
+   {
+      from = 37,
+      to = 38,
+   },
+   {
+      from = 38,
+      to = 39,
+   },
+   {
+      from = 39,
+      to = 40,
+   },
+   {
+      from = 40,
+      to = 41,
+   },
+   {
+      from = 41,
+      to = 42,
+   },
+   {
+      from = 42,
+      to = 24,
+   },
+         
 }
