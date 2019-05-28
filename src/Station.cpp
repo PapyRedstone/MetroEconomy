@@ -1,11 +1,11 @@
 #include "Station.hpp"
 #include "Tunnel.hpp"
 
-Station::Station(std::string n):sf::CircleShape{30}, isUIShow{false}, name{n}
+Station::Station(std::string n):sf::CircleShape{10}, isUIShow{false}, name{n}
 {
   //Beatiful colors
   setOutlineColor(sf::Color::Blue);
-  setOutlineThickness(5);
+  setOutlineThickness(2);
   setFillColor(sf::Color::Red);
 
   //Setting up ressources
@@ -31,7 +31,7 @@ void Station::drawUI(){
 
   for(auto& res: ressources){
     ImGui::LabelText(std::to_string(res.getAmount()).data(), res.getString().data());
-    //ImGui::LabelText(std::to_string(res.getAmount()).data(), "OK");
+    //ImGui::LabelText(std::to_string(res.getAmount()).data(), "OK"); //No string format error
   }
   
   ImGui::End();

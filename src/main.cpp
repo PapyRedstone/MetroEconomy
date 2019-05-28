@@ -3,9 +3,8 @@
 
 int main(){
   //Setting up window
-  sf::RenderWindow window(sf::VideoMode(800,600), "Metro");
+  sf::RenderWindow window(sf::VideoMode(1200,800), "Metro"/* ,sf::Style::Fullscreen*/);
   window.setVerticalSyncEnabled(true);
-  window.setFramerateLimit(60);
   ImGui::SFML::Init(window);
 
   //Setting up level
