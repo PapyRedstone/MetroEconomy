@@ -34,8 +34,9 @@ int main(){
 
   auto sizeOfStation = stations.size();
   tunnelsTable.for_each([&](const sol::object& key, const sol::table& value){
-      if(value["from"].cast<int>() < sizeOfStation || value["to"].cast<int>() < sizeOfStation){
-	std::cout << "a\n";
+      if(static_cast<unsigned>(value["from"]) >= sizeOfStation || static_cast<unsigned>(value["to"]) >= sizeOfStation){
+	std::cerr << "ERROR: when creating tunnels, one index isn't valid" << sizeOfStation << " : " << static_cast<unsigned>(value["from"]) << "," << static_cast<unsigned>(value["to"]) << "\n";
+	return;
       }
       tunnels.push_back(Tunnel(stations[value["from"]], stations[value["to"]]));
     });

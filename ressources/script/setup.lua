@@ -219,7 +219,58 @@ stations = {
       name = "Honore-Beaugrand",
       position = {820, 60}
    },
-   
+   { -- id 55
+      name = "Saint-Laurent",
+      position = {490, 390}
+   },
+   { -- id 56
+      name = "Place-des-arts",
+      position = {460, 420}
+   },
+   { -- id 57
+      name = "McGill",
+      position = {430, 450}
+   },
+   { -- id 58
+      name = "Peel",
+      position = {400, 480}
+   },
+   { -- id 59
+      name = "Guy-Concordia",
+      position = {370, 510}
+   },
+   { -- id 60
+      name = "Atwater",
+      position = {340, 540}
+   },
+   { -- id 61 340, 580
+      name = "Charlevoix",
+      position = {370, 610}
+   },
+   { -- id 62
+      name = "Lasalle",
+      position = {400, 640}
+   },
+   { -- id 63
+      name = "De l'eglise",
+      position = {370, 670}
+   },
+   { -- id 64
+      name = "Verdun",
+      position = {340, 700}
+   },
+   { -- id 65
+      name = "Jolicoeur",
+      position = {310, 670}
+   },
+   { -- id 66
+      name = "Monk",
+      position = {280, 700}
+   },
+   { -- id 67
+      name = "Angrignon",
+      position = {250, 730}
+   }
 }
 
 tunnels = {
@@ -443,5 +494,60 @@ tunnels = {
       from = 53,
       to = 54,
    },
-   
+   {
+      from = 13,
+      to = 55,
+   },
+   {
+      from = 55,
+      to = 56,
+   },
+   {
+      from = 56,
+      to = 57,
+   },
+   {
+      from = 57,
+      to = 58,
+   },
+   {
+      from = 58,
+      to = 59,
+   },
+   {
+      from = 59,
+      to = 60,
+   },
+   {
+      from = 60,
+      to = 20,
+   },
+   {
+      from = 20,
+      to = 61
+   },
+   {
+      from = 61,
+      to = 62
+   },
+   {
+      from = 62,
+      to = 63
+   },
+   {
+      from = 63,
+      to = 64
+   },
+   {
+      from = 64,
+      to = 65
+   },
+   {
+      from = 65,
+      to = 66
+   },
+   {
+      from = 66,
+      to = 67
+   }   
 }
