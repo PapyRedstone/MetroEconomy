@@ -1,5 +1,10 @@
-#include "Tunnel.hpp"
-#include <sol.hpp>
+//#include "Tunnel.hpp"
+//#include <sol.hpp>
+
+#include "imgui.hpp"
+#include "imgui-SFML.hpp"
+
+#include "MainState.hpp"
 
 int main(){
   //Setting up window
@@ -7,7 +12,9 @@ int main(){
   window.setVerticalSyncEnabled(true);
   ImGui::SFML::Init(window);
 
-  //Setting up level
+  std::shared_ptr<BaseState> state = std::make_shared<MenuState>(window);
+
+  /*//Setting up level
   std::vector<Station> stations;
   std::vector<Tunnel> tunnels;
 
@@ -43,20 +50,21 @@ int main(){
 
   //Needed for gui
   sf::Clock clock;
-
+  */
   while(window.isOpen()){
     //Managing event
     sf::Event event;
     while(window.pollEvent(event)){
       //Manage UI events
       ImGui::SFML::ProcessEvent(event);
+      state->processEvent(event);
       
       switch(event.type){
       case sf::Event::Closed:
 	window.close();
 	break;
 	
-      case sf::Event::MouseButtonPressed:
+	/*case sf::Event::MouseButtonPressed:
 	if(event.mouseButton.button == sf::Mouse::Left){
 
 	  //Switch UI show if click on a station
@@ -71,15 +79,19 @@ int main(){
 	      s.switchUIShow();
 	    }
 	  }
-	}
+	  }*/
 
       default:
 	break;
       }
     }
 
+    if(state->draw()){
+      state = state->changeState();
+    }
+
     //Drawing
-    ImGui::SFML::Update(window, clock.restart());
+    /*ImGui::SFML::Update(window, clock.restart());
 
     window.clear();
     for(auto &t:tunnels){
@@ -91,8 +103,10 @@ int main(){
     }
 
     ImGui::SFML::Render(window);
-    window.display();
+    window.display();*/
   }
+
+  ImGui::SFML::Shutdown();
 
   return 0;
 }
