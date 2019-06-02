@@ -37,4 +37,5 @@ public:
 private:
   std::vector<Station> stations;
   std::vector<Tunnel> tunnels;
+  bool showMenu;
 };

@@ -46,13 +46,13 @@ bool MenuState::draw(){
 }
 
 void MenuState::exit(){
-  std::cout << "Exited Menu\n";
+  
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 //GameState
 ///////////////////////////////////////////////////////////////////////////////
-GameState::GameState(sf::RenderWindow& win):BaseState{win}
+GameState::GameState(sf::RenderWindow& win):BaseState{win}, showMenu{false}
 {
   sol::state luaState;
   luaState.open_libraries(sol::lib::base);
@@ -88,8 +88,9 @@ GameState::GameState(sf::RenderWindow& win):BaseState{win}
 void GameState::processEvent(const sf::Event& event){
   switch(event.type){
   case sf::Event::MouseButtonPressed:
-    if(event.mouseButton.button == sf::Mouse::Left){
-      
+    switch(event.mouseButton.button){
+
+    case sf::Mouse::Left:  
       //Switch UI show if click on a station
       for(auto& s: stations){
 	sf::Vector2i mousePos = sf::Mouse::getPosition(window);
@@ -102,11 +103,23 @@ void GameState::processEvent(const sf::Event& event){
 	  s.switchUIShow();
 	}
       }
-    }
-    break;
+      break; //End of Mouse::left
 
-  default:
-    break;
+    default: break;
+    }
+    break;//End of Event::MouseButtonPressed
+
+  case sf::Event::KeyPressed:
+    switch(event.key.code){
+    case sf::Keyboard::Escape:
+      showMenu = !showMenu;
+      break;
+
+    default: break;
+    }
+    break; // End Event::KeyPressed
+    
+  default: break;
   }
 }
 
@@ -115,16 +128,18 @@ bool GameState::draw(){
   window.clear();
 
   bool changeStateNeeded = false;
-  
-  if(ImGui::Begin("Game")){
-    if(ImGui::Button("Go to Menu")){
-      newState = std::make_shared<MenuState>(window);
-      changeStateNeeded = true;
+
+  if(showMenu){
+    if(ImGui::Begin("Game")){
+      if(ImGui::Button("Go to Menu")){
+	newState = std::make_shared<MenuState>(window);
+	changeStateNeeded = true;
+      }
     }
+    
+    ImGui::End();
   }
   
-  ImGui::End();
-
   for(auto &t:tunnels){
     window.draw(t);
   }
@@ -140,5 +155,5 @@ bool GameState::draw(){
 }
  
 void GameState::exit(){
-  std::cout << "Exited Game\n";  
+  
 }
