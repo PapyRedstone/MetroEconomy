@@ -1,5 +1,7 @@
 #include "Tunnel.hpp"
 
+#include <cmath>
+
 Tunnel::Tunnel(Station& s1, Station& s2):station1{s1},station2{s2}
 {
   //Cross referencing of tunnels and stations

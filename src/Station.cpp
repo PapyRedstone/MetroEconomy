@@ -1,6 +1,9 @@
 #include "Station.hpp"
 #include "Tunnel.hpp"
 
+#include "imgui.hpp"
+#include "imgui-SFML.hpp"
+
 Station::Station(std::string n):sf::CircleShape{10}, isUIShow{false}, name{n}
 {
   //Beatiful colors

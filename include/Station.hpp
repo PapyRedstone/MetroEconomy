@@ -1,15 +1,10 @@
 #pragma once
 
-#include "imgui.hpp"
-#include "imgui-SFML.hpp"
+#include "Ressource.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include <cmath>
-#include <iostream>
 #include <string>
-
-#include "Ressource.hpp"
 
 class Tunnel;
 

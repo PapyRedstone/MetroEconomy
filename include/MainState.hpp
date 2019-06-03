@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
+
+#include "Station.hpp"
 #include "Tunnel.hpp"
 
 class BaseState{

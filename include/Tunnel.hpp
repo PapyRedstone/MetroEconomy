@@ -1,5 +1,7 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
+
 #include "Station.hpp"
 
 class Tunnel: public sf::RectangleShape{
