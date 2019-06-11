@@ -1,7 +1,7 @@
 #include "MainState.hpp"
 
 #include <iostream>
-#include <sol.hpp>
+#include <sol/sol.hpp>
 #include "imgui.hpp"
 #include "imgui-SFML.hpp"
 

@@ -1,4 +1,4 @@
-CFLAGS = -g -Wall -pedantic -O3 -std=c++17
+CFLAGS = -g -Wall -pedantic -O3 -std=c++17 -I/usr/local/include/sol/include
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lGL -llua -ldl
 #UNIT = -ftest-coverage -fprofile-arcs
 
@@ -15,8 +15,6 @@ all: $(TARGET)
 remake: clean all
 
 $(TARGET) : $(OBJ)
-#	echo $(SRC)
-#	echo $(OBJ)
 	g++ $(OBJ) $(LDFLAGS) -o $@ 
 
 obj/%.o: src/%.cpp $(INCLUDE)
