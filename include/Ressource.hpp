@@ -3,6 +3,8 @@
 #include <array>
 #include <string>
 
+typedef int ID;
+
 namespace RessourceType{
   enum Type{
     Wood,
