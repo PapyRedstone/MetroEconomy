@@ -170,10 +170,10 @@ bool GameState::draw(){
   }
   
   for(auto &t:tunnels){
-    window.draw(t);
+    t.draw(window);
   }
   for(auto &s:stations){
-    window.draw(s);
+    s.draw(window);
     s.drawUI();
   }
 

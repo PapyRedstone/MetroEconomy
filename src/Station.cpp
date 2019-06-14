@@ -9,12 +9,12 @@
 Constructor
 ============================================
 */
-Station::Station(std::string n):sf::CircleShape{10}, isUIShow{false}, name{n}, idOwner{-1}
+Station::Station(std::string n):isUIShow{false}, name{n}, idOwner{-1}, shape{10}
 {
   //Beatiful colors
-  setOutlineColor(sf::Color::Blue);
-  setOutlineThickness(2);
-  setFillColor(sf::Color::Red);
+  shape.setOutlineColor(sf::Color::Blue);
+  shape.setOutlineThickness(2);
+  shape.setFillColor(sf::Color::Red);
 
   //Setting up ressources
   for(RessourceType::Type t: RessourceType::All){
@@ -75,3 +75,38 @@ void Station::setID(ID newId){
   idOwner = newId;
 }
 
+/*
+============================================
+getPosition
+============================================
+*/
+sf::Vector2f Station::getPosition(){
+  return shape.getPosition();
+}
+
+/*
+============================================
+setPosition
+============================================
+*/
+void Station::setPosition(float x, float y){
+  shape.setPosition(x, y);
+}
+
+/*
+============================================
+getRadius
+============================================
+*/
+float Station::getRadius(){
+  return shape.getRadius();
+}
+
+/*
+============================================
+draw
+============================================
+*/
+void Station::draw(sf::RenderWindow& win){
+  win.draw(shape);
+}
