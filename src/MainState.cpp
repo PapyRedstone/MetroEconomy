@@ -5,9 +5,11 @@
 #include "imgui.hpp"
 #include "imgui-SFML.hpp"
 
-///////////////////////////////////////////////////////////////////////////////
-//BaseState
-///////////////////////////////////////////////////////////////////////////////
+/*
+============================================
+BaseState
+============================================
+*/
 BaseState::BaseState(sf::RenderWindow& win): window{win}
 {}
 
@@ -16,9 +18,11 @@ std::shared_ptr<BaseState> BaseState::changeState(){
   return newState;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//MenuState
-///////////////////////////////////////////////////////////////////////////////
+/*
+============================================
+MenuState
+============================================
+*/
 MenuState::MenuState(sf::RenderWindow &win):BaseState{win}
 {}
 
@@ -51,35 +55,48 @@ void MenuState::exit(){
   
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//GameState
-///////////////////////////////////////////////////////////////////////////////
+/*
+============================================
+GameState::Constructor
+============================================
+*/
 GameState::GameState(sf::RenderWindow& win):BaseState{win}, showMenu{false}
 {
+  //Opening lua state
   sol::state luaState;
   luaState.open_libraries(sol::lib::base);
   luaState.script_file("ressources/script/setup.lua");
 
+  //Checking stations table is present in lua
   sol::table stationsTable = luaState["stations"];
   if(!stationsTable.valid()){
     std::cerr << "Error loading sations in lua\n";
     return;
   }
 
-  stationsTable.for_each([&](const sol::object& key, const sol::table& value){
-      stations.push_back(std::string(value["name"]));
-      stations.back().setPosition(value["position"][1], value["position"][2]);
-    });
-
+  //Checking tunnels table is present in lua
   sol::table tunnelsTable = luaState["tunnels"];
   if(!stationsTable.valid()){
     std::cerr << "Error loading tunnels in lua\n";
     return ;
   }
 
+  //Creating stations
+  stationsTable.for_each([&](const sol::object& key, const sol::table& value){
+      stations.push_back(std::string(value["name"]));
+      stations.back().setPosition(value["position"][1], value["position"][2]);
+      stations.back().setID(value["idPlayer"]);
+    });
+
+  //Creating tunnels
   auto sizeOfStation = stations.size();
   tunnelsTable.for_each([&](const sol::object& key, const sol::table& value){
-      if(static_cast<unsigned>(value["from"]) >= sizeOfStation || static_cast<unsigned>(value["to"]) >= sizeOfStation){
+      unsigned from = value["from"];
+      unsigned to = value["to"];
+      if( from >= sizeOfStation ||
+	  to >= sizeOfStation || 
+	  from < 0 ||
+	  to < 0 ){//Checking range of stations id
 	std::cerr << "ERROR: when creating tunnels, one index isn't valid" << sizeOfStation << " : " << static_cast<unsigned>(value["from"]) << "," << static_cast<unsigned>(value["to"]) << "\n";
 	return;
       }
@@ -87,6 +104,11 @@ GameState::GameState(sf::RenderWindow& win):BaseState{win}, showMenu{false}
     });
 }
 
+/*
+============================================
+GameState::ProcessEvent
+============================================
+*/
 void GameState::processEvent(const sf::Event& event){
   switch(event.type){
   case sf::Event::MouseButtonPressed:
@@ -125,6 +147,11 @@ void GameState::processEvent(const sf::Event& event){
   }
 }
 
+/*
+============================================
+GameState::draw
+============================================
+*/
 bool GameState::draw(){
   ImGui::SFML::Update(window, clock.restart());
   window.clear();
@@ -143,10 +170,10 @@ bool GameState::draw(){
   }
   
   for(auto &t:tunnels){
-    window.draw(t);
+    t.draw(window);
   }
   for(auto &s:stations){
-    window.draw(s);
+    s.draw(window);
     s.drawUI();
   }
 
@@ -155,7 +182,12 @@ bool GameState::draw(){
 
   return changeStateNeeded;
 }
- 
+
+/*
+============================================
+GameState::exit
+============================================
+*/
 void GameState::exit(){
   //TODO add saving
 }
